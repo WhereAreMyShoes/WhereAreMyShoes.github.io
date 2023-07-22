@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<title> 3D Game Design </title>
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+		
+		<script src="cannon.js"></script>
+		<script src="babylon.js"></script>
+		<script src="babylon.objFileLoader.min.js"></script>
+		<script>
+			function start(){
+				var canvas = document.getElementById('renderCanvas');
+				var engine = new babylon.Engine(canvas, true);
+				
+				//Set the scene variable and parameters
+				var scene = new babylon.Scene(engine);
+				scene.clearColor = new babylon.Color3(0.5, 0.8, 0.5);
+				
+				
+				var playerSphere = babylon.MeshBuilder.CreateSphere("playerSphere", {
+					segments: 12,
+					diameter: 4
+				}, scene);
+				playerSphere.material = new babylon.StandardMaterial("playerSphereMaterial", scene);
+				playerSphere.material.diffuseTexture = new babylon.Texture('resources/BeachBallColor.jpg', scene);
+				playerSphere.position = new babylon.Vector3(0, 0, 0);
+				
+				//Create Camera
+				var camera = babylon.ArcRotateCamera("Camera", 0, (3 * Math.PI) / 8, 20, playerSphere, scene);
+				camera.attachControl(canvas, true);
+				
+				var light = new babylon.HemisphericLight('light1', new babylon.Vector3(0, 1, 0), scene);
+
+				engine.runRenderLoop(scene.render.bind(scene));
+				
+				window.addEventListener('resize', engine.resize.bind(engine));
+
+			}
+			
+		</script>
+		<style>
+			html, body {
+				overflow: hidden;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			
+			#renderCanvas {
+				width: 100%;
+				height: 100%;
+				touch-action: none;
+			}
+		</style>
+	</head>
+	<body onload="start()">
+
+		<canvas id="renderCanvas"></canvas>
+
+	</body>
+</html>
