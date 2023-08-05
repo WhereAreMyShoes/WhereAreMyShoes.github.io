@@ -15,7 +15,9 @@
 				var scene = new BABYLON.Scene(engine);
 				scene.clearColor = new BABYLON.Color3(0.5, 0.8, 0.5);
 				
-				var gravityVector
+				var gravityVector = new BABYLON.Vector3(0, -9.81, 0);
+				scene.enablePhysics(gravityVector, new BABYLON.CannonJSPlugin());	
+				
 				var playerSphere = BABYLON.MeshBuilder.CreateSphere("playerSphere", {
 					segments: 12,
 					diameter: 4
@@ -39,13 +41,11 @@
 					point.material.diffuseColor = new BABYLON.Color3(1, 0, 1);
 					point.position = new BABYLON.Vector3(x, 0.1, z);
 					point.rotation.y = zrot;
-					point.physicsImpostor = new BABYLON.PhysicsImpostor(point, BABYLON.PhysicsImpostor.BoxImpostor, {
-						mass: 0,
+					playerSphere.physicsImpostor = new BABYLON.PhysicsImpostor(playerSphere, BABYLON.PhysicsImpostor.SphereImpostor, {
+						mass: 1,
 						restitution: 0.9
 					}, scene);
 				}
-
-				drawPoint(0, 0, 0, scene);
 
 				drawPoint(0, 0, 0, scene);
 				
