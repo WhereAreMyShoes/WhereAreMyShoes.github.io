@@ -24,7 +24,7 @@
 				}, scene);
 				playerSphere.material = new BABYLON.StandardMaterial("playerSphereMaterial", scene);
 				playerSphere.material.diffuseTexture = new BABYLON.Texture('resources/BeachBallColor.jpg', scene);
-				playerSphere.position = new BABYLON.Vector3(0, 0, 0);
+				playerSphere.position = new BABYLON.Vector3(3, 3, 3);
 				
 				var camera = new BABYLON.ArcRotateCamera("Camera", 0, (3 * Math.PI) / 8, 20, playerSphere, scene);
 				camera.attachControl(canvas, true);
