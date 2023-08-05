@@ -42,7 +42,7 @@
 					point.position = new BABYLON.Vector3(x, 5, z);
 					point.rotation.y = zrot;
 					playerSphere.physicsImpostor = new BABYLON.PhysicsImpostor(playerSphere, BABYLON.PhysicsImpostor.SphereImpostor, {
-						mass: 1,
+						mass: 5,
 						restitution: 0.9
 					}, scene);
 				}
