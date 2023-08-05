@@ -15,6 +15,7 @@
 				var scene = new BABYLON.Scene(engine);
 				scene.clearColor = new BABYLON.Color3(0.5, 0.8, 0.5);
 				
+				var gravityVector
 				var playerSphere = BABYLON.MeshBuilder.CreateSphere("playerSphere", {
 					segments: 12,
 					diameter: 4
@@ -45,6 +46,7 @@
 				}
 
 				drawPoint(0, 0, 0, scene);
+				
 				engine.runRenderLoop(scene.render.bind(scene));
 				window.addEventListener('resize', engine.resize.bind(engine));
 			}
