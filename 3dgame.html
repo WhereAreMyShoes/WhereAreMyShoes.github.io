@@ -15,7 +15,7 @@
 				var scene = new BABYLON.Scene(engine);
 				scene.clearColor = new BABYLON.Color3(0.5, 0.8, 0.5);
 				
-				var gravityVector = new BABYLON.Vector3(0, 1, 0);
+				var gravityVector = new BABYLON.Vector3(0, .5, 0);
 				scene.enablePhysics(gravityVector, new BABYLON.CannonJSPlugin());	
 				
 				var playerSphere = BABYLON.MeshBuilder.CreateSphere("playerSphere", {
@@ -39,7 +39,7 @@
 					}, scene);
 					point.material = new BABYLON.StandardMaterial("pointMaterial", scene);
 					point.material.diffuseColor = new BABYLON.Color3(1, 0, 1);
-					point.position = new BABYLON.Vector3(x, -5, z);
+					point.position = new BABYLON.Vector3(x, 5, z);
 					point.rotation.y = zrot;
 					playerSphere.physicsImpostor = new BABYLON.PhysicsImpostor(playerSphere, BABYLON.PhysicsImpostor.SphereImpostor, {
 						mass: 1,
